@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/ordermanagement
+    url: jdbc:mysql://localhost:3306/ordermanagement?useSSL=false&serverTimezone=UTC
     username: root
     password: 1432
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -9,14 +9,9 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-    defer-datasource-initialization: true
     properties:
       hibernate:
         format_sql: true
-		
 
-  sql:
-    init:
-      mode: always
-	  
-dialect: org.hibernate.dialect.MySQLDialect
+server:
+  port: 8080

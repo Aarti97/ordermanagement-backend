@@ -3,9 +3,20 @@ spring:
     url: jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: ${MYSQLUSER}
     password: ${MYSQLPASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
-jpa:
-hibernate:
-ddl-auto: update
-show-sql: false
-dialect: org.hibernate.dialect.MySQLDialect
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: always
+
+server:
+  port: ${PORT:8080}
